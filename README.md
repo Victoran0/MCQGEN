@@ -20,11 +20,11 @@
 
 ##### if you want to add openai api key
 
-1. create . env file in your server
-   `touch .env`  
-   `vi .env`  
-   press insert  
-   copy your api key and paste it there  
-   press escape then :wq and hit enter  
-   Go to the security section of instance after clicking its id, add the inbound rule  
-   Add the port 8501
+create . env file in your server  
+`touch .env`  
+`vi .env`  
+press insert  
+copy your api key and paste it there  
+press escape then :wq and hit enter  
+Go to the security section of instance after clicking its id, add the inbound rule  
+Add the port 8501
