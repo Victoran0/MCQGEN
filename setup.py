@@ -9,3 +9,6 @@ setup(
                       "streamlit", "python-dotenv", "PyPDF2"],
     packages=find_packages()
 )
+
+# We install this setup with the command: python setup.py install
+# Then the mcqgenerator and wvery folder in our project directory with the __init__.py file becomes a package folder
