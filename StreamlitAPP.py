@@ -22,7 +22,7 @@ with st.form("user_inputs"):
     uploaded_file = st.file_uploader("Uplaod a PDF or txt file")
 
     # Input Fields
-    mcq_count = st.number_input("No. of MCQs", min_value=2, max_value=50)
+    mcq_count = st.number_input("No. of MCQs", min_value=3, max_value=50)
 
     # Subject
     subject = st.text_input("Insert Subject", max_chars=20)
@@ -59,9 +59,11 @@ with st.form("user_inputs"):
                 if isinstance(response, dict):
                     # Extract the quiz data from the response
                     quiz = response.get("quiz", None)
-                    print('THE QUIZ: ', quiz)
+                    print('THE QUIZ: ', quiz.split('RESPONSE_JSON')[1],
+                          f"\n and its type is {type(quiz)}")
                     if quiz is not None:
-                        table_data = get_table_data(quiz)
+                        table_data = get_table_data(
+                            quiz.split('RESPONSE_JSON')[1])
                         print('TABLE DATA: ', table_data)
                         if table_data and table_data is not None:
                             df = pd.DataFrame(table_data)

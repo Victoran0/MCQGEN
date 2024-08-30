@@ -10,12 +10,14 @@ from src.mcqgenerator.logger import logging
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.chains import SequentialChain
-from langchain_community.llms import LlamaCpp
+from langchain_google_genai.llms import GoogleGenerativeAI
 
-# model_path = "C:\\Users\\User\\.cache\\huggingface\\hub\\models--MaziyarPanahi--Meta-Llama-3-70B-Instruct-GGUF\\snapshots\\709de6cbe9635be085f64b9210bfebf75492b463\\Meta-Llama-3-70B-Instruct.IQ2_XS.gguf"
-model_path = "C:\\Users\\User\\.cache\\huggingface\\hub\\models--QuantFactory--Meta-Llama-3.1-8B-GGUF\\snapshots\\d0a93b5ad9c03e2e0f43b0814a36892638bfc856\\Meta-Llama-3.1-8B.Q4_1.gguf"
 
-llm = LlamaCpp(model_path=model_path, n_gpu_layers=33, n_ctx=1024)
+load_dotenv()
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
+
+llm = GoogleGenerativeAI(google_api_key=GEMINI_API_KEY,
+                         model="gemini-1.5-flash")
 
 template = """
 Text:{text}
